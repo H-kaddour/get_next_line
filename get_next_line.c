@@ -6,7 +6,7 @@
 /*   By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 13:52:17 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/01/03 19:21:57 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/01/04 19:04:17 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_before(char *str)
 		return (NULL);
 	while (str[i] != '\n' && str[i])
 		i++;
-	if (str[i] == '\0')
+	if (str[0] == '\0')
 	{
 		return (NULL);
 	}
