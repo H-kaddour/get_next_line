@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 13:52:17 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/01/05 15:55:05 by hkaddour         ###   ########.fr       */
+/*   Created: 2022/01/05 15:25:08 by hkaddour          #+#    #+#             */
+/*   Updated: 2022/01/05 16:07:09 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_before(char *str)
 {
@@ -119,7 +119,7 @@ char	*ft_read(int fd, char *buf, char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*str;
+	static char	*str[1024];
 	char		*buf;
 	char		*line;
 
@@ -131,11 +131,11 @@ char	*get_next_line(int fd)
 	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
 		return (NULL);
-	str = ft_read(fd, buf, str);
-	if (!str)
+	str[fd] = ft_read(fd, buf, str[fd]);
+	if (!str[fd])
 		return (NULL);
-	line = ft_before(str);
-	str = ft_after(str);
+	line = ft_before(str[fd]);
+	str[fd] = ft_after(str[fd]);
 	return (line);
 }
 /*
